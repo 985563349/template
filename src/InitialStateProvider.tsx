@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useEffect } from 'react';
+import { createContext, useState, useContext, useLayoutEffect } from 'react';
 import type { Dispatch, ReactNode, SetStateAction } from 'react';
 
 import { fetchCurrentUser } from '@/services';
@@ -24,17 +24,15 @@ function InitialStateProvider({ children }: { children: ReactNode }) {
   const [initialState, setInitialState] = useState<InitialState>({});
 
   // Application data initialization
-  useEffect(() => {
+  useLayoutEffect(() => {
     const token = localStorage.getItem('TOKEN');
-    (async () => {
-      if (token) {
-        const user = await fetchCurrentUser();
-        setInitialState((s) => ({ ...s, user, token }));
-        setLoading(false);
-      } else {
-        setLoading(false);
-      }
-    })();
+    if (token) {
+      fetchCurrentUser()
+        .then((user) => setInitialState((s) => ({ ...s, user, token })))
+        .finally(() => setLoading(false));
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   const value = {

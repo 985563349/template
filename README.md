@@ -1,1 +1,1 @@
-# react-admin
+# template
