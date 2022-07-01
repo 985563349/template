@@ -11,7 +11,7 @@ export const signOut = () => {
 };
 
 export const fetchCurrentUser = () => {
-  return new Promise<API.CurrentUser>((resolve) => {
+  return new Promise<API.CurrentUser>((resolve, reject) => {
     setTimeout(resolve, 1000, { username: 'username' });
   });
 };

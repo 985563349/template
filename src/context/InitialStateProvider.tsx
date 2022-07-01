@@ -27,9 +27,10 @@ function InitialStateProvider({ children }: { children: ReactNode }) {
   useLayoutEffect(() => {
     const token = localStorage.getItem('TOKEN');
     if (token) {
-      fetchCurrentUser()
-        .then((user) => setInitialState((s) => ({ ...s, user, token })))
-        .finally(() => setLoading(false));
+      fetchCurrentUser().then((user) => {
+        setInitialState((s) => ({ ...s, user, token }));
+        setLoading(false);
+      });
     } else {
       setLoading(false);
     }
