@@ -1,7 +1,7 @@
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Button, Checkbox, Form, Input } from 'antd';
 
-import { useInitialState } from '@/InitialStateProvider';
+import { useInitialState } from '@/context/InitialStateProvider';
 import { fetchCurrentUser, signIn } from '@/services';
 import './index.css';
 

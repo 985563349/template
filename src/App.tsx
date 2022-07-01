@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import InitialStateProvider from './InitialStateProvider';
+import InitialStateProvider from './context/InitialStateProvider';
 import RequireAuth from './RequireAuth';
 
 import Layout from './Layout';

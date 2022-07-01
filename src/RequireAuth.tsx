@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom';
-import { useInitialState } from './InitialStateProvider';
+import { useInitialState } from './context/InitialStateProvider';
 
 function RequireAuth({ children }: { children: JSX.Element }) {
   const { initialState } = useInitialState();
